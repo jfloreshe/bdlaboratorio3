@@ -63,12 +63,12 @@ CREATE TABLE `lineas_fac`(
 	PRIMARY KEY(`codfac`,`linea`)
 );
 
-ALTER TABLE `pueblos` ADD FOREIGN KEY (codpro) REFERENCES `provincias` (`codpro`);
-ALTER TABLE `clientes` ADD FOREIGN KEY (codpue) REFERENCES `pueblos` (`codpue`);
-ALTER TABLE `vendedores` ADD FOREIGN KEY (codpue) REFERENCES `pueblos` (`codpue`);
-ALTER TABLE `vendedores` ADD FOREIGN KEY (codjefe) REFERENCES `vendedores` (`codven`);
-ALTER TABLE `facturas` ADD FOREIGN KEY (codcli) REFERENCES `clientes` (`codcli`);
-ALTER TABLE `facturas` ADD FOREIGN KEY (codven) REFERENCES `vendedores` (`codven`);
-ALTER TABLE `lineas_fac` ADD FOREIGN KEY (codfac) REFERENCES `facturas` (`codfac`);
-ALTER TABLE `lineas_fac` ADD FOREIGN KEY (codart) REFERENCES `articulos` (`codart`); 
+ALTER TABLE `pueblos` ADD FOREIGN KEY (codpro) REFERENCES `provincias` (`codpro`) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE `clientes` ADD FOREIGN KEY (codpue) REFERENCES `pueblos` (`codpue`) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE `vendedores` ADD FOREIGN KEY (codpue) REFERENCES `pueblos` (`codpue`) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE `vendedores` ADD FOREIGN KEY (codjefe) REFERENCES `vendedores` (`codven`) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE `facturas` ADD FOREIGN KEY (codcli) REFERENCES `clientes` (`codcli`) ON UPDATE CASCADE ON DELETE RESTRICT ;
+ALTER TABLE `facturas` ADD FOREIGN KEY (codven) REFERENCES `vendedores` (`codven`) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE `lineas_fac` ADD FOREIGN KEY (codfac) REFERENCES `facturas` (`codfac`) ON UPDATE CASCADE ON DELETE RESTRICT;
+ALTER TABLE `lineas_fac` ADD FOREIGN KEY (codart) REFERENCES `articulos` (`codart`) ON UPDATE CASCADE ON DELETE RESTRICT; 
 
