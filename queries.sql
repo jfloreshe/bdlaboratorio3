@@ -1,4 +1,4 @@
-select max( sum(lin.cant*lin.precio)) from pueblos pue join clientes cli using(codpue) join facturas fac using(codcli) join lineas_fac lin using(codfac) where pue.codpro = 'aa' and extract( year from f.fecha) = extract(year from current_date) -1 group by codcli, extract (month from f.fecha);
+select max( sum(lin.cant*lin.precio)) from pueblos pue join clientes cli using(codpue) join facturas fac using(codcli) join lineas_fac lin using(codfac) where pue.codpro = 'aa' and extract( year from fac.fecha) = extract(year from current_date) -1 group by codcli, extract (month from fac.fecha);
 
 select codven, ven.nombre, count( distinct codcli) from vendedores ven join pueblos pue
     minus select codcli, cli.nombre from clientes cli join pueblos pue1 using(codpue)
